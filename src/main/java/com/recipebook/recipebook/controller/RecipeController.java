@@ -25,5 +25,8 @@ public class RecipeController {
     public @ResponseBody List<Recipe> getAllRecipes() {
         return recipes;
     }
+
+    @DeleteMapping("/{id}")
+
 }
 
