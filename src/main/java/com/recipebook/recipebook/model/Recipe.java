@@ -1,4 +1,4 @@
-package com.recipebook.model;
+package com.recipebook.recipebook.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
