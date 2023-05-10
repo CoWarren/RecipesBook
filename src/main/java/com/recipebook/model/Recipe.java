@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 // Lombok is a framework that tells java to create getter, setters and no args constructor
+import java.time.LocalDate;
 import java.util.Date;
 @Getter
 @Setter
@@ -13,9 +14,9 @@ public class Recipe {
 
     private String description;
 
-    private Date dateAdded;
+    private LocalDate dateAdded;
 
-    public Recipe(String title, String description, Date dateAdded){
+    public Recipe(String title, String description, LocalDate dateAdded){
         this.title = title;
         this.description = description;
         this.dateAdded = dateAdded;
