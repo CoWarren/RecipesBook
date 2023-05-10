@@ -13,20 +13,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/recipes")
 public class RecipeController {
 
-        private List<Recipe> recipes; // List to store recipes (in-memory representation)
+    private final List<Recipe> recipes; // List to store recipes (in-memory representation)
 
-        public RecipeController() {
-            recipes = new ArrayList<>();
-            // Add some sample recipes for testing
-            recipes.add(new Recipe("Pancakes", "Flour, milk, eggs", LocalDate.of(1999,2, 1)));
-        }
-
-        @GetMapping("/recipes")
-        public List<Recipe> getAllRecipes() {
-            return recipes;
-        }
-
+    public RecipeController() {
+        recipes = new ArrayList<>();
+        // Add some sample recipes for testing
+        recipes.add(new Recipe("Pancakes", "Flour, milk, eggs", LocalDate.of(1999,2, 1)));
     }
+
+    @GetMapping
+    public List<Recipe> getAllRecipes() {
+
+        return recipes;
+    }
+}
+
