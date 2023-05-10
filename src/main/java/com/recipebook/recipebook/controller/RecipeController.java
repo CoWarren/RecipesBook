@@ -18,7 +18,7 @@ public class RecipeController {
     public RecipeController() {
         recipes = new ArrayList<>();
         // Add some sample recipes for testing
-        recipes.add(new Recipe("Pancakes", "Flour, milk, eggs", LocalDate.of(1999,2, 1)));
+        recipes.add(new Recipe(24, "Pancakes", "Flour, milk, eggs", LocalDate.of(1999,2, 1)));
     }
 
     @GetMapping
