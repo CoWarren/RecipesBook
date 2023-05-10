@@ -2,6 +2,7 @@ package com.recipebook.recipebook.controller;
 
 import com.recipebook.recipebook.model.Recipe;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -24,6 +25,21 @@ public class RecipeController {
     @GetMapping
     public @ResponseBody List<Recipe> getAllRecipes() {
         return recipes;
+    }
+
+    // @PathVariable, annotation that replaces usage of "{id}" curly brackets
+    @DeleteMapping("{id}")
+    public ResponseEntity<String> deleteRecipe(@PathVariable("id") int id) {
+        // Find the recipe with the given ID and remove it from the list
+        for (Recipe recipe : recipes) {
+            if (recipe.getId() == id) {
+                recipes.remove(recipe);
+                return ResponseEntity.ok("Recipe deleted successfully");
+            }
+        }
+        return ResponseEntity
+                .notFound()
+                .build(); // Recipe with the given ID not found
     }
 }
 
