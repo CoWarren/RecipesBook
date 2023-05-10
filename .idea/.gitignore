@@ -8,3 +8,57 @@
 /dataSources.local.xml
 # Zeppelin ignored files
 /ZeppelinRemoteNotebooks/
+
+# Compiled class files
+target/
+
+# IDE files
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Log files
+logs/
+
+# Maven specific files
+mvnw
+mvnw.cmd
+.settings/
+.DS_Store
+
+# Spring Boot devtools property
+spring-boot-devtools.properties
+
+# Application properties for local development
+application-local.properties
+
+# Generated source files
+generated/
+
+# Test coverage reports
+target/
+.gradle/
+build/
+
+# Dependency lock file
+!**/dependency-reduced-pom.xml
+
+# Eclipse specific files
+.classpath
+.project
+.settings/
+.eclipse/
+
+# IntelliJ specific files
+*.iml
+.idea/
+*.ipr
+*.iws
+
+# Mac OS specific files
+.DS_Store
+
+# Gradle specific files
+.gradle/
+build/
