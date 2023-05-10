@@ -10,13 +10,16 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 public class Recipe {
+    private int id;
+    
     private String title;
 
     private String description;
 
     private LocalDate dateAdded;
 
-    public Recipe(String title, String description, LocalDate dateAdded){
+    public Recipe(int id, String title, String description, LocalDate dateAdded){
+        this.id = id;
         this.title = title;
         this.description = description;
         this.dateAdded = dateAdded;
