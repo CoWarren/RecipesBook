@@ -20,6 +20,10 @@ public class RecipeService {
         return inMemoryRecipeRepository.getAllRecipes();
     }
 
+    public Recipe getRecipeById(int recipeId) {
+        return inMemoryRecipeRepository.getRecipeById(recipeId);
+    }
+
     public boolean deleteRecipeById(int recipeId) {
         return inMemoryRecipeRepository.deleteRecipeById(recipeId);
     }

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-@RequestMapping("/api/recipes")
+@RequestMapping("/recipes")
 @RestController
 public class RecipeController {
 
@@ -26,9 +26,9 @@ public class RecipeController {
         return recipeService.getAllRecipes();
     }
 
-    @GetMapping("/{recipeId}")
-    public @ResponseBody Recipe getRecipeById(int recipeId){
-        return null;
+    @GetMapping("{recipeId}")
+    public @ResponseBody Recipe getRecipeById(@PathVariable("recipeId") int recipeId){
+        return recipeService.getRecipeById(recipeId);
     }
 
     // @PathVariable, annotation that replaces usage of "{id}" curly brackets

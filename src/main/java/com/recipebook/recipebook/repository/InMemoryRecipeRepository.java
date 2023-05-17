@@ -4,10 +4,7 @@ import com.recipebook.recipebook.model.Recipe;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.ListIterator;
 import java.util.Map;
 
 @Component
@@ -36,8 +33,8 @@ public class InMemoryRecipeRepository implements RecipeRepository {
     }
 
     @Override
-    public Recipe getTaskById(int recipeId) {
-        return null;
+    public Recipe getRecipeById(int recipeId) {
+        return recipes.get(recipeId);
     }
 
     @Override
