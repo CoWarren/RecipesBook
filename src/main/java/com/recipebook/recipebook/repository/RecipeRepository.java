@@ -9,9 +9,10 @@ public interface RecipeRepository {
 
     void initialiseRecipes();
 
-    Map<Integer, Recipe> getAllRecipes();
+    Map<String, Recipe> getAllRecipes();
 
-    Recipe getRecipeById(int recipeId);
+    Recipe getRecipeById(String recipeId);
 
-    boolean deleteRecipeById(int id);
+    Recipe createRecipe(Recipe recipe);
+    boolean deleteRecipeById(String recipeId);
 }

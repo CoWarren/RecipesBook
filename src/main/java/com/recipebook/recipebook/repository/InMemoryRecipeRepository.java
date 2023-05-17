@@ -6,39 +6,73 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 @Component
 public class InMemoryRecipeRepository implements RecipeRepository {
 
-    private final Map<Integer, Recipe> recipes;
+    private final Map<String, Recipe> recipes;
 
     public InMemoryRecipeRepository() {
         recipes = new HashMap<>();
         initialiseRecipes();
     }
 
+    private String generateNewRecipeId() {
+        return UUID.randomUUID().toString();
+    }
+
     public void initialiseRecipes() {
         // Add some sample recipes for testing
-        Recipe recipe1 = new Recipe(1, "Pancakes", "Flour, milk, eggs", LocalDate.of(1999, 2, 1));
-        Recipe recipe2 = new Recipe(2, "Banana & Rice", "Flour, milk, eggs", LocalDate.of(2009, 4, 15));
-        Recipe recipe3 = new Recipe(3, "Gyoza Ramen", "Flour, milk, eggs", LocalDate.of(1999, 6, 2));
+        Recipe recipe1 = Recipe.builder()
+                .recipeId(generateNewRecipeId())
+                .title("Pancakes")
+                .description("Flour, milk, eggs")
+                .dateAdded(LocalDate.of(1999, 2, 1))
+                .build();
+
+        Recipe recipe2 = Recipe.builder()
+                .recipeId(generateNewRecipeId())
+                .title("Banana & Rice")
+                .description("Flour, milk, eggs")
+                .dateAdded(LocalDate.of(2009, 4, 15))
+                .build();
+
+        Recipe recipe3 = Recipe.builder()
+                .recipeId(generateNewRecipeId())
+                .title("Gyoza Ramen")
+                .description("Flour, milk, eggs")
+                .dateAdded(LocalDate.of(1999, 6, 2))
+                .build();
 
         recipes.put(recipe1.getRecipeId(), recipe1);
         recipes.put(recipe2.getRecipeId(), recipe2);
         recipes.put(recipe3.getRecipeId(), recipe3);
     }
 
-    public Map<Integer, Recipe> getAllRecipes() {
+    public Map<String, Recipe> getAllRecipes() {
         return recipes;
     }
 
     @Override
-    public Recipe getRecipeById(int recipeId) {
+    public Recipe getRecipeById(String recipeId) {
         return recipes.get(recipeId);
     }
 
+    public Recipe createRecipe(Recipe recipe){
+        String recipeId = generateNewRecipeId();
+        var newRecipe = Recipe.builder()
+                .recipeId(recipeId)
+                .title(recipe.getTitle())
+                .description(recipe.getDescription())
+                .dateAdded(recipe.getDateAdded())
+                .build();
+        recipes.put(newRecipe.getRecipeId(), newRecipe);
+        return newRecipe;
+    }
+
     @Override
-    public boolean deleteRecipeById(int id) {
+    public boolean deleteRecipeById(String recipeId) {
 //        ListIterator<Recipe> iterator = recipes.listIterator();
 //        while (iterator.hasNext()) {
 //            Recipe recipe = iterator.next();
