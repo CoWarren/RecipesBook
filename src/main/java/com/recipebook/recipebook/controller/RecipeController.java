@@ -25,6 +25,11 @@ public class RecipeController {
         return recipeService.getAllRecipes();
     }
 
+    @GetMapping("/{recipeId}")
+    public @ResponseBody Recipe getRecipeById(int recipeId){
+        return null;
+    }
+
     // @PathVariable, annotation that replaces usage of "{id}" curly brackets
     @DeleteMapping("{id}")
     public ResponseEntity<String> deleteRecipeById(@PathVariable("id") int recipeId) {
@@ -36,6 +41,8 @@ public class RecipeController {
         }
         return ResponseEntity.ok("Recipe deleted successfully");
     }
+
+
 }
 
 
