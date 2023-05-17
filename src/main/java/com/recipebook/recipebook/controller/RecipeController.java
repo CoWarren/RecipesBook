@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @RequestMapping("/api/recipes")
 @RestController
@@ -21,7 +22,7 @@ public class RecipeController {
     }
 
     @GetMapping
-    public @ResponseBody List<Recipe> getAllRecipes() {
+    public @ResponseBody Map<Integer, Recipe> getAllRecipes() {
         return recipeService.getAllRecipes();
     }
 
