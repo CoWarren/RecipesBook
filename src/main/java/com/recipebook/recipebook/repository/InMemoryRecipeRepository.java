@@ -5,42 +5,51 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Map;
 
 @Component
-public class InMemoryRecipeRepository {
+public class InMemoryRecipeRepository implements RecipeRepository {
 
-    private final List<Recipe> recipes;
+    private final Map<Integer, Recipe> recipes;
 
     public InMemoryRecipeRepository() {
-        recipes = new ArrayList<>();
+        recipes = new HashMap<>();
         initialiseRecipes();
-
     }
 
     public void initialiseRecipes() {
         // Add some sample recipes for testing
-        recipes.add(new Recipe(1, "Pancakes", "Flour, milk, eggs", LocalDate.of(1999, 2, 1)));
-        recipes.add(new Recipe(2, "Banana & Rice", "Flour, milk, eggs", LocalDate.of(2009, 4, 15)));
-        recipes.add(new Recipe(3, "Gyoza Ramen", "Flour, milk, eggs", LocalDate.of(1999, 6, 2)));
+        Recipe recipe1 = new Recipe(1, "Pancakes", "Flour, milk, eggs", LocalDate.of(1999, 2, 1));
+        Recipe recipe2 = new Recipe(2, "Banana & Rice", "Flour, milk, eggs", LocalDate.of(2009, 4, 15));
+        Recipe recipe3 = new Recipe(3, "Gyoza Ramen", "Flour, milk, eggs", LocalDate.of(1999, 6, 2));
 
-
+        recipes.put(recipe1.getRecipeId(), recipe1);
+        recipes.put(recipe2.getRecipeId(), recipe2);
+        recipes.put(recipe3.getRecipeId(), recipe3);
     }
 
-    public List<Recipe> getAllRecipes() {
+    public Map<Integer, Recipe> getAllRecipes() {
         return recipes;
     }
 
+    @Override
+    public Recipe getTaskById(int recipeId) {
+        return null;
+    }
+
+    @Override
     public boolean deleteRecipeById(int id) {
-        ListIterator<Recipe> iterator = recipes.listIterator();
-        while (iterator.hasNext()) {
-            Recipe recipe = iterator.next();
-            if (recipe.getRecipeId() == id) {
-                iterator.remove();
-                return true; // Deletion successful
-            }
-        }
+//        ListIterator<Recipe> iterator = recipes.listIterator();
+//        while (iterator.hasNext()) {
+//            Recipe recipe = iterator.next();
+//            if (recipe.getRecipeId() == id) {
+//                iterator.remove();
+//                return true; // Deletion successful
+//            }
+//        }
         return false; // Recipe with the given ID not found
     }
 }

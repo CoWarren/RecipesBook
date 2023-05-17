@@ -5,6 +5,7 @@ import com.recipebook.recipebook.repository.InMemoryRecipeRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service // Annotation must be implemented for Spring Boot to autowire inMemoryRepository
 public class RecipeService {
@@ -15,7 +16,7 @@ public class RecipeService {
         this.inMemoryRecipeRepository = inMemoryRecipeRepository;
     }
 
-    public List<Recipe> getAllRecipes() {
+    public Map<Integer,Recipe> getAllRecipes() {
         return inMemoryRecipeRepository.getAllRecipes();
     }
 
