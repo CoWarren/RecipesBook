@@ -11,7 +11,7 @@ public interface RecipeRepository {
 
     Map<Integer, Recipe> getAllRecipes();
 
-    Recipe getTaskById(int recipeId);
+    Recipe getRecipeById(int recipeId);
 
     boolean deleteRecipeById(int id);
 }
