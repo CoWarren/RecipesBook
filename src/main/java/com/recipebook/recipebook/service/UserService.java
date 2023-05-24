@@ -2,9 +2,10 @@ package com.recipebook.recipebook.service;
 
 import com.recipebook.recipebook.model.User;
 import com.recipebook.recipebook.repository.InMemoryUserRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.Map;
-
+@Service
 public class UserService {
 
     private final InMemoryUserRepository inMemoryUserRepository;
